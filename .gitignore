@@ -1,0 +1,14 @@
+# Build output
+/dist
+
+# Caches/logs
+/coverage
+/tsconfig.tsbuildinfo
+/yarn-error.log
+
+# Dependencies
+/node_modules
+
+# IDEs/editors
+.idea
+.vscode/settings.json
