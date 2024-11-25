@@ -37,7 +37,8 @@
     "lint:prettier": "prettier --check . !.docker/volumes",
     "fix": "yarn fix:eslint && yarn fix:prettier",
     "fix:eslint": "eslint --fix",
-    "fix:prettier": "prettier --write . !.docker/volumes"
+    "fix:prettier": "prettier --write . !.docker/volumes",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "nodemailer": "^6.9.16"
