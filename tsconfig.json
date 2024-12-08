@@ -9,6 +9,8 @@
     "lib": ["ES2021"],
     "target": "ES2021",
 
+    "paths": { "~/*": ["./src/*"] },
+
     "allowJs": true,
     "declaration": true,
     "declarationMap": true,

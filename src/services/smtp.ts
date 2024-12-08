@@ -5,19 +5,22 @@ import {
 } from "@medusajs/framework/utils";
 import nodemailer, { type Transporter } from "nodemailer";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
+import { z, ZodError } from "zod";
 
 type InjectedDependencies = {
   logger: Logger;
 };
 
-export interface SmtpNotificationServiceConfig {
-  from?: string;
-  host: string;
-  pass?: string;
-  port: number;
-  secure?: boolean;
-  user?: string;
-}
+export type SmtpNotificationServiceConfig = z.infer<typeof configSchema>;
+
+const configSchema = z.object({
+  from: z.string().optional(),
+  host: z.string(),
+  pass: z.string().optional(),
+  port: z.number(),
+  secure: z.boolean().optional(),
+  user: z.string().optional(),
+});
 
 export class SmtpNotificationService extends AbstractNotificationProviderService {
   static identifier = "notification-smtp";
@@ -36,10 +39,10 @@ export class SmtpNotificationService extends AbstractNotificationProviderService
     this.logger = logger;
     this.config = { ...options };
     this.transport = this.createTransport();
-
-    console.group("SmtpNotificationService::constructor");
-    console.log("options:", options);
-    console.groupEnd();
+    this.logger.debug(
+      "Initialised SmtpNotificationService with options: " +
+        JSON.stringify(options),
+    );
   }
 
   protected createTransport() {
@@ -69,9 +72,6 @@ export class SmtpNotificationService extends AbstractNotificationProviderService
       );
     }
 
-    console.group("SmtpNotificationService::send");
-    console.log("notification:", notification);
-
     try {
       const { messageId } = await this.transport.sendMail({
         from: notification.from?.trim() || this.config.from,
@@ -93,15 +93,24 @@ export class SmtpNotificationService extends AbstractNotificationProviderService
           : undefined,
       });
 
-      console.log("messageId:", messageId);
-      console.groupEnd();
-
       return { id: messageId };
     } catch (error) {
-      console.groupEnd();
       throw new MedusaError(
         MedusaError.Types.UNEXPECTED_STATE,
         `Failed to send email: ${error.message ?? "unknown error"}`,
+      );
+    }
+  }
+
+  static validateOptions(options: Record<string, unknown>) {
+    try {
+      configSchema.parse(options);
+    } catch (error) {
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
+        error instanceof ZodError
+          ? `Invalid SMTP module config: ${JSON.stringify(error.issues)}`
+          : (error as Error).message,
       );
     }
   }
