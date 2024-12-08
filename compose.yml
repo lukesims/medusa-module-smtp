@@ -1,0 +1,19 @@
+name: medusa-module-smtp
+services:
+  mailpit:
+    image: axllent/mailpit:latest
+    restart: unless-stopped
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+  node:
+    build: .
+    command: "tail -f /dev/null"
+    user: node
+    working_dir: /home/node/app
+    depends_on:
+      - mailpit
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./:/home/node/app
