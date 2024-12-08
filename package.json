@@ -28,8 +28,9 @@
     "node": ">=20"
   },
   "scripts": {
-    "test": "jest --passWithNoTests src",
-    "test:integration": "jest --forceExit -- integration-tests/**/__tests__/**/*.spec.ts",
+    "test": "echo '' && yarn test:unit && echo '' && yarn test:integration",
+    "test:unit": "jest --passWithNoTests src",
+    "test:integration": "jest integration-tests",
     "build": "rimraf dist && tsc --build ./tsconfig.json",
     "watch": "tsc --watch",
     "lint": "yarn lint:eslint && yarn lint:prettier",
@@ -38,16 +39,16 @@
     "fix": "yarn fix:eslint && yarn fix:prettier",
     "fix:eslint": "eslint --fix",
     "fix:prettier": "prettier --write . !.docker/volumes",
-    "prepare": "npm run build"
+    "prepare": "yarn build"
   },
   "dependencies": {
     "nodemailer": "^6.9.16"
   },
   "peerDependencies": {
-    "@medusajs/framework": "^2.0.1"
+    "@medusajs/framework": "^2.0.0"
   },
   "devDependencies": {
-    "@medusajs/framework": "^2.0.1",
+    "@medusajs/framework": "^2.0.7",
     "@mikro-orm/core": "5.9.7",
     "@mikro-orm/migrations": "5.9.7",
     "@mikro-orm/postgresql": "5.9.7",
@@ -59,6 +60,7 @@
     "@types/jest": "^29.5.14",
     "@types/nodemailer": "^6.4.16",
     "awilix": "^8.0.1",
+    "dotenv": "^16.4.7",
     "eslint": "^9.13.0",
     "eslint-config-prettier": "^9.1.0",
     "globals": "^15.11.0",
@@ -69,5 +71,5 @@
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.12.2"
   },
-  "packageManager": "npm@10.9.0+sha512.65a9c38a8172948f617a53619762cd77e12b9950fe1f9239debcb8d62c652f2081824b986fee7c0af6c0a7df615becebe4bf56e17ec27214a87aa29d9e038b4b"
+  "packageManager": "yarn@4.5.3"
 }
