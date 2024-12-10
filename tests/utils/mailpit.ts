@@ -9,7 +9,7 @@ if (
   !process.env.MAILPIT_SMTP_SECURE
 ) {
   throw new Error(
-    "Missing required environment variables for SMTP service integration testing.\nSee integration-tests/__tests__/smtp.spec.ts for the required variables.",
+    "Missing required environment variables for SMTP service integration testing.\nSee integration-tests/utils/mailpit.ts for the required variables.",
   );
 }
 

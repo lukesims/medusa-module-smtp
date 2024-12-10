@@ -15,7 +15,8 @@ export function getCombos<O>(
     if (idx + 1 < keys.length) {
       getCombos(obj, idx + 1, cur, res);
     } else {
-      res.push(JSON.parse(JSON.stringify(cur)));
+      // res.push(JSON.parse(JSON.stringify(cur)));
+      res.push(Object.assign({}, cur));
     }
   }
 

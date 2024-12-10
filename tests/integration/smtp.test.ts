@@ -9,8 +9,8 @@ import { resolve } from "node:path";
 import {
   SmtpNotificationService,
   SmtpNotificationServiceConfig,
-} from "../src/services/smtp";
-import { getCombos } from "./utils/combos";
+} from "../../src/services/smtp";
+import { getCombos } from "../utils/combos";
 import {
   cleanId,
   deleteMessages,
@@ -22,10 +22,10 @@ import {
   listMessages,
   config as mailpitConfig,
   searchMessages,
-} from "./utils/mailpit";
+} from "../utils/mailpit";
 
 const readAttachment = (name: string) => {
-  const path = resolve(__dirname, "files", name);
+  const path = resolve(__dirname, "../files", name);
   return {
     content: readFileSync(path, { encoding: "base64" }),
     size: statSync(path).size,
@@ -409,9 +409,9 @@ describe("SMTP notification provider", () => {
     // we can compare them against the data received by Mailpit
     const validCombos: [string, Partial<ProviderSendNotificationDTO>][] = [];
 
-    // 3 for each invalid combo, 1 for every valid combo, plus 3 others
-    // validating the API response - so we expect 259 ((4 x 64) + 3)
-    expect.assertions(259);
+    // 3 for each invalid combo, 1 for every valid combo, plus 4 others
+    // validating the API response - so we expect 259 ((4 x 64) + 4)
+    expect.assertions(260);
 
     for (const combo of combos) {
       try {
@@ -425,6 +425,8 @@ describe("SMTP notification provider", () => {
         expect(error.type).toMatch(MedusaError.Types.UNEXPECTED_STATE);
       }
     }
+
+    expect(validCombos).toHaveLength(64);
 
     const response = await listMessages({ limit: 100 });
     expect(response.messages).toHaveLength(64);

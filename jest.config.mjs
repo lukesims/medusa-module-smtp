@@ -4,6 +4,7 @@ export default {
   moduleNameMapper: { "^~/": "<rootDir>/src" },
   modulePathIgnorePatterns: ["dist/"],
   setupFiles: ["dotenv/config"],
+  setupFilesAfterEnv: ["./tests/setup.ts"],
   testEnvironment: "node",
   testPathIgnorePatterns: ["dist/", "node_modules/"],
   transformIgnorePatterns: ["node_modules/"],
