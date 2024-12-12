@@ -21,28 +21,22 @@ jobs:
           - 1025:1025
           - 8025:8025
     steps:
-      -
-        name: Check out repository code
+      - name: Check out repository code
         uses: actions/checkout@v4
-      -
-        name: Enable Corepack
+      - name: Enable Corepack
         run: corepack enable
-      -
-        name: Set up Node
+      - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          cache: 'yarn'
-          cache-dependency-path: 'yarn.lock'
+          cache: "yarn"
+          cache-dependency-path: "yarn.lock"
           check-latest: true
-          node-version: '22'
-      -
-        name: Install dependencies
+          node-version: "22"
+      - name: Install dependencies
         run: yarn install --immutable
-      -
-        name: Run linters
+      - name: Run linters
         run: yarn lint
-      -
-        name: Run tests
+      - name: Run tests
         run: yarn test
         env:
           MAILPIT_HOST: mailpit
