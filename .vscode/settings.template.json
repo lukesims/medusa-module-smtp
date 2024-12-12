@@ -1,5 +1,5 @@
 {
-  "[javascript][json][jsonc][markdown][typescript][typescriptreact][yaml]": {
+  "[github-actions-workflow][javascript][json][jsonc][markdown][typescript][typescriptreact][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   }
