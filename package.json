@@ -18,10 +18,7 @@
     "url": "https://github.com/lukesims/medusa-module-smtp"
   },
   "files": [
-    "dist",
-    "!dist/**/__tests__",
-    "!dist/**/__mocks__",
-    "!dist/**/__fixtures__"
+    "dist"
   ],
   "main": "dist/index.js",
   "engines": {
