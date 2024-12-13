@@ -36,17 +36,11 @@ export class SmtpNotificationService extends AbstractNotificationProviderService
     options: SmtpNotificationServiceConfig,
   ) {
     super();
+
     this.logger = logger;
     this.config = { ...options };
-    this.transport = this.createTransport();
-    this.logger.debug(
-      "Initialised SmtpNotificationService with options: " +
-        JSON.stringify(options),
-    );
-  }
 
-  protected createTransport() {
-    return nodemailer.createTransport(
+    this.transport = nodemailer.createTransport(
       {
         host: this.config.host,
         port: this.config.port,
@@ -60,6 +54,8 @@ export class SmtpNotificationService extends AbstractNotificationProviderService
         from: this.config.from,
       },
     );
+
+    this.logger.info("Initialised SmtpNotificationService");
   }
 
   async send(
