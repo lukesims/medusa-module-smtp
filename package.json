@@ -21,6 +21,7 @@
     "dist"
   ],
   "main": "dist/index.js",
+  "packageManager": "yarn@4.5.3",
   "engines": {
     "node": ">=20"
   },
@@ -28,7 +29,7 @@
     "test": "yarn test:unit && yarn test:integration",
     "test:unit": "jest src",
     "test:integration": "jest tests/integration",
-    "build": "rimraf dist && tsc --build ./tsconfig.json",
+    "build": "rm -rf ./dist && tsc --build ./tsconfig.json",
     "watch": "tsc --watch",
     "lint": "yarn lint:eslint && yarn lint:prettier",
     "lint:eslint": "eslint",
@@ -63,11 +64,8 @@
     "globals": "^15.11.0",
     "jest": "^29.7.0",
     "jest-extended": "^4.0.2",
-    "pg": "^8.13.0",
     "prettier": "^3.3.3",
-    "rimraf": "^6.0.1",
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.12.2"
-  },
-  "packageManager": "yarn@4.5.3"
+  }
 }
