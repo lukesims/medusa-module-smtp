@@ -2643,13 +2643,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"awilix@npm:^8.0.1":
-  version: 8.0.1
-  resolution: "awilix@npm:8.0.1"
+"awilix@npm:^12.0.4":
+  version: 12.0.4
+  resolution: "awilix@npm:12.0.4"
   dependencies:
     camel-case: "npm:^4.1.2"
-    fast-glob: "npm:^3.2.12"
-  checksum: 10c0/088da738d5cc380a1637e5757d63fc70a7954ca6c168bad15a65caab96922cad34f8a461f6071cd213f81109c281d83a70a4df04b8668f5230a19c5b903fca37
+    fast-glob: "npm:^3.3.2"
+  checksum: 10c0/8a39f895b45f527605be4b3b34e9b91ee75b9f8d4614a80c005f604f936fd3f313629e9ca48a68dd9edcd989c2d78bf737f0ecbca976a4aa33c46852d318e803
   languageName: node
   linkType: hard
 
@@ -3916,7 +3916,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.2.12, fast-glob@npm:^3.2.9, fast-glob@npm:^3.3.2":
+"fast-glob@npm:^3.2.9, fast-glob@npm:^3.3.2":
   version: 3.3.2
   resolution: "fast-glob@npm:3.3.2"
   dependencies:
@@ -5810,7 +5810,7 @@ __metadata:
     "@types/eslint__js": "npm:^8.42.3"
     "@types/jest": "npm:^29.5.14"
     "@types/nodemailer": "npm:^6.4.16"
-    awilix: "npm:^8.0.1"
+    awilix: "npm:^12.0.4"
     dotenv: "npm:^16.4.7"
     eslint: "npm:^9.13.0"
     eslint-config-prettier: "npm:^9.1.0"
