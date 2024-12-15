@@ -46,7 +46,7 @@ module.exports = defineConfig({
               from: process.env.SMTP_FROM,
               host: process.env.SMTP_HOST,
               pass: process.env.SMTP_PASS,
-              port: process.env.SMTP_PORT,
+              port: parseInt(process.env.SMTP_PORT, 10),
               secure: process.env.SMTP_SECURE === "true",
               user: process.env.SMTP_USER,
             },
