@@ -4230,10 +4230,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globals@npm:^15.11.0":
-  version: 15.13.0
-  resolution: "globals@npm:15.13.0"
-  checksum: 10c0/640365115ca5f81d91e6a7667f4935021705e61a1a5a76a6ec5c3a5cdf6e53f165af7f9db59b7deb65cf2e1f83d03ac8d6660d0b14c569c831a9b6483eeef585
+"globals@npm:^16.0.0":
+  version: 16.0.0
+  resolution: "globals@npm:16.0.0"
+  checksum: 10c0/8906d5f01838df64a81d6c2a7b7214312e2216cf65c5ed1546dc9a7d0febddf55ffa906cf04efd5b01eec2534d6f14859a89535d1a68241832810e41ef3fd5bb
   languageName: node
   linkType: hard
 
@@ -5694,7 +5694,7 @@ __metadata:
     dotenv: "npm:^16.4.7"
     eslint: "npm:^9.13.0"
     eslint-config-prettier: "npm:^9.1.0"
-    globals: "npm:^15.11.0"
+    globals: "npm:^16.0.0"
     jest: "npm:^29.7.0"
     jest-extended: "npm:^4.0.2"
     nodemailer: "npm:^6.9.16"
